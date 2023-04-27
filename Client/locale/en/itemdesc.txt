@@ -1,0 +1,14 @@
+70500	Oneiric Soul	
+70501	Gleaming Oneiric Soul	
+70502	Lustrous Oneiric Soul	
+70503	Prismatic Oneiric Soul	
+70504	Illumined Oneiric Soul	
+70505	Celestial Soul	
+70506	Gleaming Celestial Soul	
+70507	Lustrous Celestial Soul	
+70508	Prismatic Celestial Soul	
+70509	Illumined Celestial Soul	
+70600	Soul Case	This glowing case is a gift from Ah-Yu for your help. It contains two souls.
+70601	Blue Circlet	Circlet which Ah-Yu lost.
+70602	Soul Parchment (100%)	Increase your soul's development one level with this parchment.
+70603	Soul Parchment	Increase your soul's development up to two levels with this parchment. The attempt may fail.

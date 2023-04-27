@@ -1,0 +1,14 @@
+70500	ETC	icon/item/70500.tga
+70501	ETC	icon/item/70501.tga
+70502	ETC	icon/item/70502.tga
+70503	ETC	icon/item/70503.tga
+70504	ETC	icon/item/70504.tga
+70505	ETC	icon/item/70505.tga
+70506	ETC	icon/item/70506.tga
+70507	ETC	icon/item/70507.tga
+70508	ETC	icon/item/70508.tga
+70509	ETC	icon/item/70509.tga
+70600	ETC	icon/item/70600.tga
+70601	ETC	icon/item/70601.tga
+70602	ETC	icon/item/70602.tga
+70603	ETC	icon/item/70603.tga

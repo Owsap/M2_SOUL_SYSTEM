@@ -1,0 +1,11 @@
+SOUL_ITEM_TOOLTIP_APPLY	Effect activated
+SOUL_ITEM_TOOLTIP_BLUE1	Playing time: %d/%d min. 
+SOUL_ITEM_TOOLTIP_BLUE2	Skill damage increases by x%.1f on reaching the playing time
+SOUL_ITEM_TOOLTIP_COMMON	Not for: PvP, Transformation
+SOUL_ITEM_TOOLTIP_RED1	Playing time: %d/%d min. 
+SOUL_ITEM_TOOLTIP_RED2	Attack damage increases by x%.1f on reaching the playing time
+SOUL_ITEM_TOOLTIP_REMAIN_COUNT	Remaining attacks: %d
+SOUL_ITEM_TOOLTIP_REMOVE_TIME	Soul expires in
+SOUL_ITEM_TOOLTIP_UNAPPLIED	Effect not activated
+SOUL_REFINE_FAILURE	Refinement failed.
+SOUL_REFINE_SUCCESS	Refinement successful!

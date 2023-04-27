@@ -1,0 +1,99 @@
+define EVENT_NPC 20003
+define EVENT_LEVEL_LIMIT 30
+define EVENT_ITEM_VNUM 70601
+define EVENT_REWARD_VNUM 70600
+
+quest soul_system begin
+	state start begin
+		when login or levelup with pc.get_level() >= EVENT_LEVEL_LIMIT begin
+			if game.get_event_flag("soul_event") > 0 and pc.getqf("complete") != 1 then
+				set_state("information")
+			end
+		end
+	end
+
+	state information begin
+		when letter begin
+			local v = find_npc_by_vnum(EVENT_NPC)
+			if v != 0 then
+				target.vid("__TARGET__", v, gameforge.soul_system._8234_npcChat)
+			end
+			send_letter(gameforge.soul_system._8220_sendLetter)
+		end
+
+		when button or info begin
+			say_title(gameforge.soul_system._8221_npcChat)
+			say(gameforge.soul_system._8222_chat)
+		end
+
+		when __TARGET__.target.click or EVENT_NPC.chat.gameforge.soul_system._8223_npcChat begin
+			target.delete("__TARGET__")
+
+			say_title(gameforge.soul_system._8223_npcChat)
+			say(gameforge.soul_system._8224_chat)
+			say(gameforge.soul_system._8225_chat)
+			say(gameforge.soul_system._8226_chat)
+			if select(gameforge.soul_system._8227_select, gameforge.soul_system._8228_select) == 1 then
+				say(gameforge.soul_system._8230_chat)
+				set_state(hunt_wolves)
+			else
+				say(gameforge.soul_system._8229_chat)
+			end
+		end
+	end
+
+	state hunt_wolves begin
+		when letter begin
+			send_letter(gameforge.soul_system._8220_sendLetter)
+		end
+
+		when button or info begin
+			say_title(gameforge.soul_system._8221_npcChat)
+			say(gameforge.soul_system._8231_chat)
+		end
+
+		when 102.kill or 103.kill or 104.kill or 105.kill or 106.kill or 107.kill begin
+			if math.random(1, 100) == 1 then
+				game.drop_item_with_ownership(70601, 1)
+
+				notice_multiline(gameforge.soul_system._8235_notice, notice)
+				set_state("return_to_ahyu")
+			end
+		end
+	end
+
+	state return_to_ahyu begin
+		when letter begin
+			local v = find_npc_by_vnum(EVENT_NPC)
+			if v != 0 then
+				target.vid("__TARGET__", v, gameforge.soul_system._8234_npcChat)
+			end
+			send_letter(gameforge.soul_system._8223_npcChat)
+		end
+
+		when button or info begin
+			say(gameforge.soul_system._8235_notice)
+		end
+
+		when __TARGET__.target.click or EVENT_NPC.chat.gameforge.soul_system._8223_npcChat begin
+			target.delete("__TARGET__")
+
+			if pc.count_item(EVENT_ITEM_VNUM) > 0 then
+				say_title(gameforge.soul_system._8234_npcChat)
+				say(gameforge.soul_system._8232_chat)
+
+				pc.remove_item(EVENT_ITEM_VNUM, 1)
+				pc.give_item2(EVENT_REWARD_VNUM, 1)
+
+				pc.setqf("complete", 1)
+				set_state("start")
+			else
+				say_title(gameforge.soul_system._8234_npcChat)
+				say(gameforge.soul_system._8233_chat)
+
+				pc.setqf("complete", 0)
+				set_state("hunt_wolves")
+			end
+		end
+	end
+end
