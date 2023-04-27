@@ -2,11 +2,12 @@ define EVENT_NPC 20003
 define EVENT_LEVEL_LIMIT 30
 define EVENT_ITEM_VNUM 70601
 define EVENT_REWARD_VNUM 70600
+define EVENT_REPEAT_TIME 86400
 
 quest soul_system begin
 	state start begin
 		when login or levelup with pc.get_level() >= EVENT_LEVEL_LIMIT begin
-			if game.get_event_flag("soul_event") > 0 and pc.getqf("complete") != 1 then
+			if game.get_event_flag("soul_event") > 0 and get_time() > pc.getqf("complete") then
 				set_state("information")
 			end
 		end
@@ -85,7 +86,7 @@ quest soul_system begin
 				pc.remove_item(EVENT_ITEM_VNUM, 1)
 				pc.give_item2(EVENT_REWARD_VNUM, 1)
 
-				pc.setqf("complete", 1)
+				pc.setqf("complete", get_time() + EVENT_REPEAT_TIME)
 				set_state("start")
 			else
 				say_title(gameforge.soul_system._8234_npcChat)
