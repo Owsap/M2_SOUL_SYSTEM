@@ -8,7 +8,7 @@
 
 // Add below
 #if defined(__SOUL_SYSTEM__)
-		if (iRet != BATTLE_NONE)
+		if (IsPC() && iRet != BATTLE_NONE)
 			SoulItemProcess(RED_SOUL);
 #endif
 
@@ -19,7 +19,7 @@
 
 // Add below
 #if defined(__SOUL_SYSTEM__)
-		if (iRet != BATTLE_NONE)
+		if (IsPC() && iRet != BATTLE_NONE)
 			SoulItemProcess(BLUE_SOUL);
 #endif
 
@@ -118,7 +118,7 @@
 			{
 				if (pAttacker->FindAffect(AFFECT_SOUL, AFF_SOUL_RED))
 				{
-					float fDamMultiplier =  static_cast<float>(100 * pAttacker->GetSoulDamage(RED_SOUL)) / 1000;
+					float fDamMultiplier = static_cast<float>(100 * pAttacker->GetSoulDamage(RED_SOUL)) / 1000;
 					if (fDamMultiplier != 0)
 						dam = (int)(dam * fDamMultiplier);
 				}
@@ -134,7 +134,7 @@
 			{
 				if (pAttacker->FindAffect(AFFECT_SOUL, AFF_SOUL_BLUE))
 				{
-					float fDamMultiplier =  static_cast<float>(100 * pAttacker->GetSoulDamage(BLUE_SOUL)) / 1000;
+					float fDamMultiplier = static_cast<float>(100 * pAttacker->GetSoulDamage(BLUE_SOUL)) / 1000;
 					if (fDamMultiplier != 0)
 						dam = (int)(dam * fDamMultiplier);
 				}

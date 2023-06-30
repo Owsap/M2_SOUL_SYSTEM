@@ -109,17 +109,20 @@ bool CHARACTER::DoRefineSoul(LPITEM item)
 
 // Add above
 #if defined(__SOUL_SYSTEM__)
-	if (bType == REFINE_TYPE_SOUL_AWAKE || bType == REFINE_TYPE_SOUL_EVOLVE)
+	if (item->GetType() == ITEM_SOUL)
 	{
-		p.cost = 0;
-		p.prob = bType == REFINE_TYPE_SOUL_AWAKE ? 100 : soul_refine_prob[MINMAX(0, item->GetValue(1), SOUL_GRADE_MAX)];
-		p.material_count = 0;
-		std::memset(p.materials, 0, sizeof(p.materials));
+		if (bType == REFINE_TYPE_SOUL_AWAKE || bType == REFINE_TYPE_SOUL_EVOLVE)
+		{
+			p.cost = 0;
+			p.prob = bType == REFINE_TYPE_SOUL_AWAKE ? 100 : soul_refine_prob[MINMAX(0, item->GetValue(1), SOUL_GRADE_MAX)];
+			p.material_count = 0;
+			std::memset(p.materials, 0, sizeof(p.materials));
 
-		GetDesc()->Packet(&p, sizeof(TPacketGCRefineInformation));
+			GetDesc()->Packet(&p, sizeof(TPacketGCRefineInformation));
 
-		SetRefineMode(iAdditionalCell);
-		return true;
+			SetRefineMode(iAdditionalCell);
+			return true;
+		}
 	}
 #endif
 
